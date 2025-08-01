@@ -1,35 +1,76 @@
-import { Container } from "../../../components/Contaner/Container";
-
+import { useState } from 'react';
+import { Container } from "../../../components/Container/Container";
 import { IoSearch } from "react-icons/io5";
-
 import style from "./Hero.module.scss";
 
-export const Hero = () => {
+export const Hero = ({ onCitySearch }) => {
+  const [city, setCity] = useState('');
+
+  const formatDate = () => {
+    const date = new Date();
+    const monthYear = date.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+    const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
+    const day = date.getDate();
+
+    let suffix = "th";
+    if (day === 1 || day === 21 || day === 31) suffix = "st";
+    else if (day === 2 || day === 22) suffix = "nd";
+    else if (day === 3 || day === 23) suffix = "rd";
+
+    return `${monthYear}\n${weekday}, ${day}${suffix}`; 
+  };
+
+  const handleSearch = () => {
+    if (city.trim()) {
+      onCitySearch(city.trim());
+      setCity('');
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
-    <section classname={style.hero}>
-      <Container>
-        <h2 className={style.hero__title}>
-          Weather dashboard
-        </h2>
+    <section className={style.hero}>
+      <Container className={style.hero__container}>
+        <h2 className={style.hero__title}>Weather dashboard</h2>
         <ul className={style.hero__couple}>
           <li className={style.hero__item}>
             <p className={style.hero__advice}>
-              Create your personal list of favorite cities and always be aware of the weather.
+              Create your personal list of favorite cities and always be aware
+              of the weather.
             </p>
           </li>
           <li className={style.hero__item}>
-            <p className={style.hero__date}>
-              ...
-            </p>
+            <p className={style.hero__date}>{formatDate()}</p>
           </li>
         </ul>
         <div className={style.hero__box}>
-          <input className={style.hero__input} type="text" placeholder="Search location..." />
-          <button className={style.hero__button} type="button">
-            <IoSearch />
+          <input
+            className={style.hero__input}
+            type="text"
+            placeholder="Search city..."
+            aria-label="Search city"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            onKeyDown={handleKeyPress}
+          />
+          <button 
+            className={style.hero__button} 
+            type="button" 
+            aria-label="Search"
+            onClick={handleSearch}
+          >
+            <IoSearch size={25} />
           </button>
         </div>
       </Container>
     </section>
   );
-}
+};

@@ -1,0 +1,112 @@
+.hero {
+  position: relative;
+  background-image: url("../../../assets/images/Hero/hero.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 595px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 100px 0 0 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.48);
+    z-index: 1;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    gap: 80px;
+  }
+
+  &__title {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__couple {
+    display: flex;
+    padding: 0 504px 0 323px;
+  }
+
+  &__advice {
+    width: 345px;
+    height: 144px;
+    color: #fff;
+    text-align: right;
+    padding: 0 52px 0 0;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 500;
+
+    border-right: solid 1.5px #fff;
+  }
+
+  &__date {
+    width: 164px;
+    height: 144px;
+    color: #fff;
+    text-align: left;
+    padding: 0 0 0 52px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 500;
+
+    border-left: solid 1.5px #fff;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    width: 625px;
+    height: 42px;
+  }
+
+  &__input {
+    width: 580px;
+    height: 42px;
+    padding: 13px 29px 12px;
+    border: none;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #d9d9d9;
+
+    &::placeholder {
+      color: #878787;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    width: 45px;
+    height: 42px;
+    border-radius: 0 10px 10px 0;
+    border-left: 2px solid #000;
+    background: #ffb36c;
+
+    transition: all 500ms;
+
+    &:hover {
+      background: darken(#ffb36c, 5%);
+    }
+  }
+}
