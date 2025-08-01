@@ -1,0 +1,58 @@
+.weather {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  color: black;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__temp {
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+
+  &__details {
+    text-align: right;
+    font-size: 1rem;
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.loading {
+  color: white;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  margin-top: 2rem;
+}
