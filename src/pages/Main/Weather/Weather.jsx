@@ -7,8 +7,6 @@ import { Container } from "../../../components/Container/Container.jsx";
 import style from "./Weather.module.scss";
 
 export const Weather = ({ city }) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [nearestHours, setNearestHours] = useState({});
 
@@ -68,10 +66,6 @@ export const Weather = ({ city }) => {
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ua&appid=${API_KEY}`
         );
 
-        if (!response.ok) {
-          throw new Error("Не вдалося отримати дані про погоду");
-        }
-
         const data = await response.json();
 
         setFavoriteCities((prev) => {
@@ -85,18 +79,13 @@ export const Weather = ({ city }) => {
 
           return newCities;
         });
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+      } catch (error) {
+        console.error(error.message);
       }
     };
 
     fetchWeather();
   }, [city]);
-
-  if (loading) return <div className={style.loading}>Loading...</div>;
-  if (error) return <div className={style.error}>{error}</div>;
   if (!city) return null;
 
   const formatDate = () => {
