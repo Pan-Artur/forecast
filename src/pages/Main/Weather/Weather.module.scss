@@ -1,58 +1,167 @@
 .weather {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-top: 2rem;
-  color: black;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 60px 0 0 0;
 
-  &__header {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    grid-template-rows: repeat(3, 430px);
+    gap: 90px;
+  }
+
+  &__item {
+    width: 320px;
+    height: 430px;
+    padding: 15px 20px 30px 20px;
+    border-radius: 20px;
+    background: #e8e8e8;
+  }
+
+  &__content {
+    position: relative;
   }
 
   &__title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  &__description {
-    font-size: 1.2rem;
-    text-transform: capitalize;
-  }
-
-  &__main {
     display: flex;
     justify-content: space-between;
+    margin: 0 0 15px 0;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__time {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px 0;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__forecasts {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 0 0 15px 0;
+  }
+
+  &__forecast {
+    display: inline-flex;
+    padding: 8px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #ffb36c;
+
+    color: #000;
+    text-align: right;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+
+    transition: all 500ms;
+
+    &:hover {
+      background: darken(#ffb36c, 10%);
+    }
+  }
+
+  &__couple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 157px 0;
+  }
+
+  &__date {
+    height: 17px;
+    padding: 0 13px 0 0;
+    color: #000;
+    text-align: right;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    border-right: solid 1px #000;
+  }
+
+  &__weekday {
+    height: 17px;
+    padding: 0 0 0 13px;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+  }
+
+  &__temperature {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 39px 0;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__managment {
+    display: flex;
     align-items: center;
   }
 
-  &__temp {
-    font-size: 3.5rem;
-    font-weight: bold;
-  }
+  &__manage {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
 
-  &__details {
-    text-align: right;
-    font-size: 1rem;
+    transition: transform 200ms ease;
 
-    p {
-      margin: 0.5rem 0;
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
     }
   }
-}
 
-.loading {
-  color: white;
-  text-align: center;
-  margin-top: 2rem;
-}
+  &__refresh {
+    margin: 0 16px 0 0;
+  }
 
-.error {
-  color: #ff6b6b;
-  text-align: center;
-  margin-top: 2rem;
+  &__like {
+    margin: 0 38px 0 0;
+  }
+
+  &__more {
+    display: inline-flex;
+    padding: 8px 25px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 37px 0 0;
+    gap: 10px;
+    border-radius: 10px;
+    background: #ffb36c;
+    color: #000;
+    text-align: right;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+
+    transition: all 500ms;
+
+    &:hover {
+      background: darken(#ffb36c, 10%);
+    }
+  }
 }
