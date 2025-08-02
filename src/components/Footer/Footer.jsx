@@ -1,4 +1,7 @@
-import { Container } from "../Container/Container";
+import { Container } from "../Container/Container.jsx";
+import wasap from "../../assets/images/Header/wasap.webp";
+import instagram from "../../assets/images/Header/instagram.webp";
+import facbuk from "../../assets/images/Header/facbuk.webp";
 
 export const Footer = () => {
   return (
@@ -17,23 +20,17 @@ export const Footer = () => {
           <h3 className="footerSuptitle">Contact us</h3>
           <ul className="footerContactsList">
             <li className="footerContactsItem">
-              <svg className="footerItem">
-                <use></use>
-              </svg>
+              <img className="footerImg" src={wasap} alt="" />
             </li>
             <li className="footerContactsItem">
-              <svg className="footerItem">
-                <use></use>
-              </svg>
+              <img className="footerImg" src={instagram} alt="" />
             </li>
             <li className="footerContactsItem">
-              <svg className="footerItem">
-                <use></use>
-              </svg>
+              <img className="footerImg" src={facbuk} alt="" />
             </li>
           </ul>
         </div>
       </Container>
     </footer>
   );
-}
+};
