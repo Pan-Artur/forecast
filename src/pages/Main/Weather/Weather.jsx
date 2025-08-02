@@ -14,7 +14,7 @@ export const Weather = ({ city }) => {
     const fetchWeather = async () => {
       setLoading(true);
       setError(null);
-      setWeather(null); // Скидаємо погоду перед новим запитом
+      setWeather(null); 
 
       try {
         const response = await fetch(

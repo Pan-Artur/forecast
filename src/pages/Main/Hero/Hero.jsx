@@ -1,6 +1,9 @@
 import { useState } from 'react';
+
 import { Container } from "../../../components/Container/Container";
+
 import { IoSearch } from "react-icons/io5";
+
 import style from "./Hero.module.scss";
 
 export const Hero = ({ onCitySearch }) => {

@@ -1,10 +1,9 @@
-import { Container } from "../Contaner/Container";
+import { Container } from "../Container/Container";
 
 export const Footer = () => {
   return (
     <footer>
-      <Container >
-        
+      <Container>
         <svg>
           <use></use>
         </svg>
