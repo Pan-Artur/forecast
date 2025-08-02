@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 import { Container } from "../../../components/Container/Container";
 
@@ -7,7 +7,7 @@ import { IoSearch } from "react-icons/io5";
 import style from "./Hero.module.scss";
 
 export const Hero = ({ onCitySearch }) => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
 
   const formatDate = () => {
     const date = new Date();
@@ -23,18 +23,25 @@ export const Hero = ({ onCitySearch }) => {
     else if (day === 2 || day === 22) suffix = "nd";
     else if (day === 3 || day === 23) suffix = "rd";
 
-    return `${monthYear}\n${weekday}, ${day}${suffix}`; 
+    return (
+      <>
+        {monthYear}
+        <br />
+        {weekday}, {day}
+        <sup>{suffix}</sup>
+      </>
+    );
   };
 
   const handleSearch = () => {
     if (city.trim()) {
       onCitySearch(city.trim());
-      setCity('');
+      setCity("");
     }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSearch();
     }
   };
@@ -46,8 +53,10 @@ export const Hero = ({ onCitySearch }) => {
         <ul className={style.hero__couple}>
           <li className={style.hero__item}>
             <p className={style.hero__advice}>
-              Create your personal list of favorite cities and always be aware
-              of the weather.
+              <span className={style.hero__description}>
+                Create your personal list of favorite cities and always be aware
+                of the weather.
+              </span>
             </p>
           </li>
           <li className={style.hero__item}>
@@ -64,9 +73,9 @@ export const Hero = ({ onCitySearch }) => {
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <button 
-            className={style.hero__button} 
-            type="button" 
+          <button
+            className={style.hero__button}
+            type="button"
             aria-label="Search"
             onClick={handleSearch}
           >
