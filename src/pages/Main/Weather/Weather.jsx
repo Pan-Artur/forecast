@@ -9,6 +9,8 @@ import style from "./Weather.module.scss";
 export const Weather = ({ city }) => {
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [nearestHours, setNearestHours] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const API_KEY = "f075d83dbfbfbae34a2640e861c8c267";
 
@@ -33,15 +35,37 @@ export const Weather = ({ city }) => {
     const hours = String(nearestHour.getUTCHours()).padStart(2, "0");
     const minutes = String(nearestHour.getUTCMinutes()).padStart(2, "0");
 
-    return `${hours}:${minutes}`;
+    const day = String(localTime.getUTCDate()).padStart(2, "0");
+    const month = String(localTime.getUTCMonth() + 1).padStart(2, "0");
+    const year = localTime.getUTCFullYear();
+    const date = `${day}.${month}.${year}`;
+
+    const weekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const weekday = weekdays[localTime.getUTCDay()];
+
+    return {
+      time: `${hours}:${minutes}`,
+      date,
+      weekday,
+    };
   };
 
   useEffect(() => {
     const updateAllNearestHours = () => {
       const updateTimes = {};
+
       favoriteCities.forEach((city) => {
         updateTimes[city.name] = updateNearestFullHour(city.timezone);
       });
+
       setNearestHours(updateTimes);
     };
 
@@ -113,7 +137,7 @@ export const Weather = ({ city }) => {
               </h2>
               <div className={style.weather__content}>
                 <p className={style.weather__time}>
-                  {nearestHours[cityWeather.name]}
+                  {nearestHours[cityWeather.name]?.time}
                 </p>
                 <div className={style.weather__forecasts}>
                   <button
@@ -131,10 +155,14 @@ export const Weather = ({ city }) => {
                 </div>
                 <ul className={style.weather__couple}>
                   <li className={style.weather__term}>
-                    <p className={style.weather__date}>{formatDate()}</p>
+                    <p className={style.weather__date}>
+                      {nearestHours[cityWeather.name]?.date}
+                    </p>
                   </li>
                   <li className={style.weather__term}>
-                    <p className={style.weather__weekday}>{formatWeekday()}</p>
+                    <p className={style.weather__weekday}>
+                      {nearestHours[cityWeather.name]?.weekday}
+                    </p>
                   </li>
                 </ul>
                 <div className={style.weather__icon}>
