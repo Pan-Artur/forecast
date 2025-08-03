@@ -11,7 +11,7 @@ export const Main = () => {
     <main>
       <Hero onCitySearch={setSearchCity} />
       {searchCity && <Weather city={searchCity} />}
-      <Pets />
+      <Pets keyword={searchCity} />
       <Nature />
     </main>
   );
