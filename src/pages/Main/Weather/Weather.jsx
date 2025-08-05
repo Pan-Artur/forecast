@@ -7,6 +7,7 @@ import { Container } from "../../../components/Container/Container.jsx";
 import style from "./Weather.module.scss";
 
 export const Weather = ({ city }) => {
+  const [searchedCities, setSearchedCities] = useState([]);
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [nearestHours, setNearestHours] = useState({});
   const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ export const Weather = ({ city }) => {
     const updateAllNearestHours = () => {
       const updateTimes = {};
 
-      favoriteCities.forEach((city) => {
+      favoriteCities?.forEach((city) => {
         updateTimes[city.name] = updateNearestFullHour(city.timezone);
       });
 
@@ -92,43 +93,77 @@ export const Weather = ({ city }) => {
 
         const data = await response.json();
 
-        setFavoriteCities((prev) => {
-          const cityExists = prev.some((c) => c.name === data.name);
-          const newCities = cityExists ? prev : [...prev, data];
-
-          setNearestHours((prev) => ({
-            ...prev,
-            [data.name]: updateNearestFullHour(data.timezone),
-          }));
-
-          return newCities;
+        setSearchedCities(prevState => {
+          const cityExists = prevState.some(c => c.name === data.name);
+          return cityExists ? prevState : [...prevState, data];
         });
+
+        setNearestHours(prevHours => ({
+          ...prevHours,
+          [data.name]: updateNearestFullHour(data.timezone),
+        }));
       } catch (error) {
         console.error(error.message);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchWeather();
   }, [city]);
+
   if (!city) return null;
 
-  const formatDate = () => {
-    const [day, month, year] = new Date()
-      .toLocaleDateString("uk-UA")
-      .split(".");
-    return `${day}.${month}.${year}`;
+  const handleRefreshClick = (cityName) => {
+    setLoading(true);
+    setError(null);
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&lang=ua&appid=${API_KEY}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setFavoriteCities((prevState) => {
+          const updatedCities = prevState.map((item) =>
+            item.name === cityName ? data : item
+          );
+
+          return updatedCities;
+        });
+      });
   };
 
-  const formatWeekday = () => {
-    return new Date().toLocaleDateString("en-US", { weekday: "long" });
+  const handleLikeClick = (cityName) => {
+    const cityToAdd = searchedCities.find(city => city.name === cityName);
+    
+    if (cityToAdd) {
+      setFavoriteCities(prevState => {
+        const cityExists = prevState.some(city => city.name === cityName);
+        return cityExists ? prevState : [...prevState, cityToAdd];
+      });
+      
+      setSearchedCities(prevState => 
+        prevState.filter(city => city.name !== cityName)
+      );
+    }
+  };
+
+  const handleDeleteClick = (cityName) => {
+    setFavoriteCities(prevState => 
+      prevState.filter(city => city.name !== cityName)
+    );
   };
 
   return (
     <section className={style.weather}>
       <Container>
         <ul className={style.weather__list}>
-          {favoriteCities.map((cityWeather, index) => (
-            <li key={index} className={style.weather__item}>
+          {favoriteCities?.map((cityWeather, index) => (
+            <li
+              key={`${cityWeather.name}-${index}`}
+              className={style.weather__item}
+            >
               <h2 className={style.weather__title}>
                 <span className={style.weather__city}>{cityWeather.name}</span>
                 <span className={style.weather__country}>
@@ -179,6 +214,7 @@ export const Weather = ({ city }) => {
               </div>
               <div className={style.weather__managment}>
                 <button
+                  onClick={() => handleRefreshClick(cityWeather.name)}
                   className={`${style.weather__manage} ${style.weather__refresh}`}
                   type="button"
                 >
@@ -214,6 +250,7 @@ export const Weather = ({ city }) => {
                   </svg>
                 </button>
                 <button
+                  onClick={() => handleLikeClick(cityWeather.name)}
                   className={`${style.weather__manage} ${style.weather__like}`}
                   type="button"
                 >
@@ -252,6 +289,7 @@ export const Weather = ({ city }) => {
                   See more
                 </button>
                 <button
+                  onClick={() => handleDeleteClick(cityWeather.name)}
                   className={`${style.weather__manage} ${style.weather__delete}`}
                   type="button"
                 >
