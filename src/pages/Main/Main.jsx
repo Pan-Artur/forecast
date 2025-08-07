@@ -44,7 +44,7 @@ export const Main = () => {
           setDeletedCities={setDeletedCities}
         />
       )}
-      <Pets />
+      <Pets keyword={searchCity} />
       <Nature />
     </main>
   );
