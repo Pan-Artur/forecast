@@ -1,0 +1,50 @@
+.header {
+  height: 80px;
+  padding: 0 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &NavBox {
+    align-items: center;
+    display: flex;
+    gap: 111px;
+  }
+  &Nav {
+    gap: 45px;
+    display: flex;
+
+    &Item {
+      color: #000;
+
+      font-family: "Montserrat Alternates";
+      font-size: 12px;
+
+      font-weight: 500;
+
+    }
+  }
+
+  &Logo {
+    width: 82px;
+    height: 56px;
+  }
+  &LogInBox {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+  }
+  &Btn {
+    padding: 10px 20px;
+
+    color: #000;
+    border-radius: 10px;
+    background: #ffb36c;
+    font-family: "Montserrat Alternates";
+    font-size: 12px;
+    font-weight: 500;
+  }
+  &PP {
+    width: 50px;
+  }
+}
