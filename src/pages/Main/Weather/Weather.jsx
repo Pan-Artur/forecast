@@ -8,7 +8,12 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 import style from "./Weather.module.scss";
 
-export const Weather = ({ city, setDeletedCities, onSeeMoreClick }) => {
+export const Weather = ({
+  city,
+  setDeletedCities,
+  onSeeMoreClick,
+  expandedCityId,
+}) => {
   const [searchedCities, setSearchedCities] = useState([]);
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [nearestHours, setNearestHours] = useState({});
@@ -248,11 +253,19 @@ export const Weather = ({ city, setDeletedCities, onSeeMoreClick }) => {
   };
 
   const handleSeeMoreClick = (cityWeather) => {
+    if (expandedCityId && expandedCityId !== cityWeather.id) return;
+
     onSeeMoreClick(cityWeather);
   };
 
   const handleDeleteClick = (cityName, cityData, wasFavorite = false) => {
     setAnimations((prev) => ({ ...prev, removing: cityName }));
+
+    const isCurrentExpanded = expandedCityId === cityData?.id;
+
+    if (isCurrentExpanded) {
+      onSeeMoreClick(null);
+    }
 
     setTimeout(() => {
       setDeletedCities((prev) => ({
@@ -267,7 +280,7 @@ export const Weather = ({ city, setDeletedCities, onSeeMoreClick }) => {
       setSearchedCities((prev) => prev.filter((c) => c.name !== cityName));
       setFavoriteCities((prev) => prev.filter((c) => c.name !== cityName));
       setAnimations((prev) => ({ ...prev, removing: null }));
-      addNotification("City deleted.", "info");
+      addNotification(`City ${cityName} deleted`, "info");
     }, 300);
   };
 
@@ -424,10 +437,19 @@ export const Weather = ({ city, setDeletedCities, onSeeMoreClick }) => {
                   </button>
                   <button
                     onClick={() => handleSeeMoreClick(cityWeather)}
-                    className={style.weather__more}
+                    className={`${style.weather__more} ${
+                      expandedCityId === cityWeather.id
+                        ? style.weather__more_active
+                        : ""
+                    }`}
                     type="button"
+                    disabled={
+                      !!expandedCityId && expandedCityId !== cityWeather.id
+                    }
                   >
-                    See more
+                    {expandedCityId === cityWeather.id
+                      ? "See Less"
+                      : "See More"}
                   </button>
                   <button
                     onClick={() =>
@@ -601,10 +623,19 @@ export const Weather = ({ city, setDeletedCities, onSeeMoreClick }) => {
                   </button>
                   <button
                     onClick={() => handleSeeMoreClick(cityWeather)}
-                    className={style.weather__more}
+                    className={`${style.weather__more} ${
+                      expandedCityId === cityWeather.id
+                        ? style.weather__more_active
+                        : ""
+                    }`}
                     type="button"
+                    disabled={
+                      !!expandedCityId && expandedCityId !== cityWeather.id
+                    }
                   >
-                    See more
+                    {expandedCityId === cityWeather.id
+                      ? "See Less"
+                      : "See More"}
                   </button>
                   <button
                     onClick={() =>

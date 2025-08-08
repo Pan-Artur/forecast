@@ -1,13 +1,42 @@
 .seeMore {
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 0 80px 0;
+
+  &_closing {
+    opacity: 0;
+    transform: translateY(20px);
+    max-height: 0;
+    padding: 0 0 0 0;
+    transition: all 0.3s ease-in;
+  }
+
+  &_visible {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1000px;
+    padding: 0 0 80px 0;
+    transition: all 0.4s ease-out;
+  }
+
+  &_animating {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
   &__list {
     display: grid;
     grid-template-columns: repeat(3, 290px);
     grid-template-rows: repeat(2, 217px);
     column-gap: 58px;
     row-gap: 40px;
+    width: 1140px;
     padding: 40px 77px;
     border-radius: 20px;
     background: #e8e8e8;
+    transition: all 0.3s ease;
   }
 
   &__item {
@@ -17,6 +46,7 @@
     align-items: center;
     border-radius: 10px;
     background: #d9d9d9;
+    transition: all 0.3s ease;
   }
 
   &__content {
@@ -47,5 +77,15 @@
   &__icon {
     width: 85px;
     height: 85px;
+    transition: all 0.3s ease;
   }
+}
+
+// Animations
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }
