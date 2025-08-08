@@ -9,6 +9,7 @@ export const Main = () => {
   const [searchCity, setSearchCity] = useState("");
   const [deletedCities, setDeletedCities] = useState({});
   const [expandedCity, setExpandedCity] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleCitySearch = (city) => {
     const searchQuery = city.trim();
@@ -20,19 +21,41 @@ export const Main = () => {
 
     if (deletedCityKey) {
       const cityData = deletedCities[deletedCityKey];
-      
       setSearchCity(cityData.originalName || cityData.name);
-
       setDeletedCities((prev) => {
         const newDeleted = { ...prev };
         delete newDeleted[deletedCityKey];
         return newDeleted;
       });
-
       return;
     }
 
     setSearchCity(searchQuery);
+  };
+
+  const handleSeeMoreClick = (cityWeather) => {
+    if (cityWeather === null) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setExpandedCity(null);
+        setIsAnimating(false);
+      }, 300);
+      return;
+    }
+
+    if (expandedCity?.id === cityWeather.id) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setExpandedCity(null);
+        setIsAnimating(false);
+      }, 300);
+    } else {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setExpandedCity(cityWeather);
+        setIsAnimating(false);
+      }, 500);
+    }
   };
 
   return (
@@ -44,13 +67,17 @@ export const Main = () => {
           onCityCleared={() => setSearchCity("")}
           deletedCities={deletedCities}
           setDeletedCities={setDeletedCities}
-          onSeeMoreClick={setExpandedCity}
+          onSeeMoreClick={handleSeeMoreClick}
+          expandedCityId={expandedCity?.id}
         />
       )}
       {expandedCity && (
-        <SeeMore 
+        <SeeMore
           cityName={expandedCity.name}
           weatherData={expandedCity}
+          isActive={true}
+          isOtherCityActive={expandedCity !== null}
+          isAnimating={isAnimating}
         />
       )}
       <Pets keyword={searchCity} />

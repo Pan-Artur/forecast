@@ -119,4 +119,21 @@
       background: darken(#ffb36c, 10%);
     }
   }
+
+  &__error {
+    position: absolute;
+    bottom: -30px;
+    left: 450px;
+    color: #ff6b6b;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    animation: shake 0.5s ease;
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+  }
 }

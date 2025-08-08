@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Container } from "../../../components/Container/Container";
 
 import temperatureImage from "../../../assets/images/SeeMore/temperature.webp";
@@ -8,7 +9,17 @@ import visibilityImage from "../../../assets/images/SeeMore/visibility.webp";
 
 import style from "./SeeMore.module.scss";
 
-export const SeeMore = ({ cityName, weatherData }) => {
+export const SeeMore = ({
+  cityName,
+  weatherData,
+  isActive,
+  isOtherCityActive,
+  isAnimating
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [isShaking, setIsShaking] = useState(false);
+
   const weatherDetails = [
     {
       title: "Feels like",
@@ -44,8 +55,53 @@ export const SeeMore = ({ cityName, weatherData }) => {
     },
   ];
 
+  useEffect(() => {
+    if (!weatherData) {
+      setIsClosing(true);
+      return;
+    }
+    
+    setIsVisible(true);
+    
+    if (isOtherCityActive) {
+      setIsShaking(true);
+      const timer = setTimeout(() => setIsShaking(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isOtherCityActive, weatherData]);
+
+  useEffect(() => {
+    if (!weatherData) {
+      setIsClosing(true);
+      return;
+    }
+    
+    setIsVisible(true);
+    
+    if (isOtherCityActive) {
+      setIsShaking(true);
+      const timer = setTimeout(() => setIsShaking(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isOtherCityActive, weatherData]);
+
+  if (isClosing) {
+    return (
+      <div className={`${style.seeMore} ${style.seeMore_closing}`}>
+        <Container>
+          <ul className={style.seeMore__list}>
+          </ul>
+        </Container>
+      </div>
+    );
+  }
+
   return (
-    <section className={style.seeMore}>
+    <section 
+      className={`${style.seeMore} ${isVisible ? style.seeMore_visible : ''} ${
+        isShaking ? style.shake : ''
+      } ${isOtherCityActive ? style.highlight : ''}`}
+    >
       <Container>
         <ul className={style.seeMore__list}>
           {weatherDetails.map((detail, index) => (

@@ -17,11 +17,9 @@
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: 
-      transform 0.3s,
-      opacity 0.5s ease-out;
+    transition: transform 0.3s, opacity 0.5s ease-out;
     animation: slideIn 0.3s ease-out;
-    opacity: 1; 
+    opacity: 1;
 
     &:hover {
       transform: translateX(5px);
@@ -199,7 +197,7 @@
   }
 
   &__like {
-    margin: 0 38px 0 0;
+    margin: 0 42px 0 0;
   }
 
   &__more {
@@ -207,7 +205,8 @@
     padding: 8px 25px;
     justify-content: center;
     align-items: center;
-    margin: 0 37px 0 0;
+    margin: 0 34px 0 0;
+    width: 99px;
     gap: 10px;
     border-radius: 10px;
     background: #ffb36c;
@@ -221,6 +220,17 @@
 
     &:hover {
       background: darken(#ffb36c, 10%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:hover {
+        transform: none;
+        opacity: 0.5;
+      }
     }
   }
 }
@@ -287,6 +297,38 @@
   }
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
 .weather {
   &__item {
     transition: all 0.3s ease;
@@ -319,6 +361,20 @@
     &--active {
       animation: refresh 0.5s ease;
       transition: none;
+    }
+  }
+
+  &__more {
+    transition: all 0.3s ease;
+    position: relative;
+
+    &_text {
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    &_active &_text {
+      animation: pulse 0.5s ease;
     }
   }
 

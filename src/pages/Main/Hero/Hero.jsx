@@ -8,6 +8,7 @@ import style from "./Hero.module.scss";
 
 export const Hero = ({ onCitySearch }) => {
   const [city, setCity] = useState("");
+  const [error, setError] = useState(false);
 
   const formatDate = () => {
     const date = new Date();
@@ -37,6 +38,9 @@ export const Hero = ({ onCitySearch }) => {
     if (city.trim()) {
       onCitySearch(city.trim());
       setCity("");
+      setError(false);
+    } else {
+      setError(true);
     }
   };
 
@@ -82,6 +86,11 @@ export const Hero = ({ onCitySearch }) => {
             <IoSearch size={25} />
           </button>
         </div>
+        {error && (
+          <div className={style.hero__error}>
+            Please enter a city name to search
+          </div>
+        )}
       </Container>
     </section>
   );
