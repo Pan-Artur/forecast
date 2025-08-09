@@ -1,0 +1,42 @@
+.news {
+  padding-top: 80px;
+  &Title {
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 35px;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+  }
+  &List {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  &Item {
+    width: 250px;
+  }
+  &Img {
+    height: 208px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  &Text {
+    color: #000;
+
+    font-family: Montserrat;
+    font-size: 16px;
+
+    font-weight: 500;
+
+  }
+}

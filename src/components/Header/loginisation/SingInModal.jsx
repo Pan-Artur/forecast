@@ -1,11 +1,24 @@
 import styles from "./Login.module.scss";
 import { RxCross2 } from "react-icons/rx";
 
-export const SingInModal = () => {
+export const SingInModal = ({ signIn, setSignIn, setLogIn, logIn }) => {
+  const changeSignIn = () => {
+    setSignIn(!signIn);
+    
+  };
+  const changeLogIn = () => {
+    setLogIn(!logIn);
+     setSignIn(false);
+  };
   return (
-    <div className={styles.backdrop}>
+    <div className={signIn ? styles.backdrop : styles.isClosed}>
       <div className={styles.modal}>
-        <h2 className={styles.modalSuptitle}>Sing Up <span className={styles.modalSuptitleSpan}><RxCross2 className={styles.modalClose}/></span></h2>
+        <h2 className={styles.modalSuptitle}>
+          Sing Up{" "}
+          <span onClick={changeSignIn} className={styles.modalSuptitleSpan}>
+            <RxCross2 className={styles.modalClose} />
+          </span>
+        </h2>
         <form className={styles.modalForm}>
           <ul className={styles.modalFormList}>
             <li className={styles.modalFormItem}>
@@ -42,11 +55,14 @@ export const SingInModal = () => {
               />
             </li>
           </ul>
-          <button type="submit" className={styles.modalSignInBtn}>Sing Up</button>
+          <button type="submit" className={styles.modalSignInBtn}>
+            Sing Up
+          </button>
         </form>
-        <p className={styles.modalLink}>Already have an account? <span className={styles.modalLinkSpan}>Log In</span></p>
-        
-        
+        <p onClick={changeLogIn} className={styles.modalLink}>
+          Already have an account?
+          <span className={styles.modalLinkSpan}>Log In</span>
+        </p>
       </div>
     </div>
   );

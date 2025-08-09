@@ -7,10 +7,18 @@ import { SingInModal } from "./loginisation/SingInModal";
 import { LogInModal } from "./loginisation/LogInModal";
 
 export const Header = () => {
+  const [toggleLogInModal, setToggleLogInModal] = useState(false)
+  const [toggleSignInModal, setToggleSignInModal] = useState(false)
   const [headerModalState, setHeaderModalState] = useState(false)
+
+  const changeSignInModal = () => {
+    setToggleSignInModal(!toggleSignInModal)
+  }
+
   const toggleHeaderModal = () => {
     setHeaderModalState(!headerModalState);
   };
+
   return (
     <header className={styles.header }>
       <div className={styles.headerNavBox}>
@@ -28,7 +36,7 @@ export const Header = () => {
         </nav>
       </div>
       <div className={styles.headerLogInBox}>
-        <button type="button" className={styles.headerBtn}>
+        <button onClick={changeSignInModal} type="button" className={styles.headerBtn}>
           Sing Up
         </button>
         <img src={user} alt="Profile Picture" className={styles.headerPP} />
@@ -51,13 +59,13 @@ export const Header = () => {
         <div className={styles.headerModalLogInBox}>
           <img src={user} alt="Profile Picture" className={styles.headerModalPP} />
 
-          <button type="button" className={styles.headerModalBtn}>
+          <button onClick={changeSignInModal} type="button" className={styles.headerModalBtn}>
             Sing Up
           </button>
         </div>
       </div>
-      {/* <LogInModal />
-      <SingInModal /> */}
+      <LogInModal logIn={toggleLogInModal} setLogIn={setToggleLogInModal}/>
+      <SingInModal signIn={toggleSignInModal} setSignIn={setToggleSignInModal} setLogIn={setToggleLogInModal} logIn={toggleLogInModal}/>
     </header>
   );
 };

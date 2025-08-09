@@ -1,0 +1,62 @@
+.footer {
+  background-color: #ffb36c;
+  height: 300px;
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    height: 179px;
+  }
+  &Container {
+    display: flex;
+    gap: 40px;
+        justify-content: space-around;
+
+    flex-wrap: wrap;
+    align-items: center;
+    @media screen and (min-width: 768px) {
+      gap: 103px;
+    }
+  }
+  &Logo {
+    width: 90px;
+    height: 62px;
+  }
+  &Img {
+    width: 40px;
+  }
+  &List {
+    color: #000;
+
+    font-family: "Montserrat Alternates";
+    font-size: 10px;
+    font-weight: 500;
+    &:first-child {
+      font-size: 14px;
+      margin-bottom: 10px;
+      @media screen and (min-width: 1140px) {
+        font-size: 16px;
+      }
+    }
+    @media screen and (min-width: 1140px) {
+      font-size: 12px;
+    }
+  }
+  &Suptitle {
+    color: #000;
+
+    font-family: "Montserrat Alternates";
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    @media screen and (min-width: 1140px) {
+      font-size: 16px;
+    }
+  }
+  &Contacts {
+    &List {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}

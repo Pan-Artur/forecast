@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "../../../components/Container/Container";
+import styles from './Pets.module.scss'
 
 export const Pets = ({ keyword }) => {
   const [news, setNews] = useState(null);
@@ -39,33 +40,15 @@ export const Pets = ({ keyword }) => {
     getData();
   }, [keyword]);
 
-  // const formatDate = () => {
-  //   const date = new Date();
-  //   const year = date.toLocaleDateString("uk-UA", {
-  //     year: "numeric",
-  //   });
-  //   const month = date.toLocaleDateString("uk-UA", {
-  //     month: "numeric",
-  //   });
-  //   const day = date.toLocaleDateString("uk-UA", {
-  //     day: "numeric",
-  //   });
-
-  //   const sevenDaysAgo = new Date(Date.now() - (7 * 24 * 60 * 60 * 1000));
-
-  //   console.log(formatDate(sevenDaysAgo));
-
-  //   return `${year}-${month}-${day}`;
-  // };
   return <>
-    <section className="pets">
+    <section className={styles.news}>
       <Container>
-        <h2 className="newsTitle">News</h2>
-        <ul className="newsList">
+        <h2 className={styles.newsTitle}>News</h2>
+        <ul className={styles.newsList}>
           {news?.articles?.map(article => (
-            <li className="newsItem">
-              <img src={article.urlToImage} alt="" className="newsImg" />
-              <p className="newsText">{article.content}</p>
+            <li className={styles.newsItem}>
+              <img src={article.urlToImage} alt="" className={styles.newsImg} />
+              <p className={styles.newsText}>{article.title}</p>
             </li>
           ))}
         </ul>

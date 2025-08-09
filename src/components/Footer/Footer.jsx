@@ -2,33 +2,36 @@ import { Container } from "../Container/Container.jsx";
 import wasap from "../../assets/images/Header/wasap.webp";
 import instagram from "../../assets/images/Header/instagram.webp";
 import facbuk from "../../assets/images/Header/facbuk.webp";
+import styles from "./Footer.module.scss";
+import logo from "../../assets/images/Header/logo.webp";
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <Container>
-        <svg>
-          <use></use>
-        </svg>
-        <ul className="footerList">
-          <li className="footerItem">Address</li>
-          <li className="footerItem">Svobody str. 35</li>
-          <li className="footerItem">Kyiv</li>
-          <li className="footerItem">Ukraine</li>
-        </ul>
-        <div className="footerContacts">
-          <h3 className="footerSuptitle">Contact us</h3>
-          <ul className="footerContactsList">
-            <li className="footerContactsItem">
-              <img className="footerImg" src={wasap} alt="" />
-            </li>
-            <li className="footerContactsItem">
-              <img className="footerImg" src={instagram} alt="" />
-            </li>
-            <li className="footerContactsItem">
-              <img className="footerImg" src={facbuk} alt="" />
-            </li>
+        <div className={styles.footerContainer}>
+          <img src={logo} alt="logo" className={styles.footerLogo} />
+
+          <ul className={styles.footerList}>
+            <li className={styles.footerList}>Address</li>
+            <li className={styles.footerList}>Svobody str. 35</li>
+            <li className={styles.footerList}>Kyiv</li>
+            <li className={styles.footerList}>Ukraine</li>
           </ul>
+          <div className={styles.footerContacts}>
+            <h3 className={styles.footerSuptitle}>Contact us</h3>
+            <ul className={styles.footerContactsList}>
+              <li className={styles.footerContactsItem}>
+                <img className={styles.footerImg} src={wasap} alt="" />
+              </li>
+              <li className={styles.footerContactsItem}>
+                <img className={styles.footerImg} src={instagram} alt="" />
+              </li>
+              <li className={styles.footerContactsItem}>
+                <img className={styles.footerImg} src={facbuk} alt="" />
+              </li>
+            </ul>
+          </div>
         </div>
       </Container>
     </footer>
