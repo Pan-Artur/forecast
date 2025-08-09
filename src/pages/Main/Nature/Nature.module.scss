@@ -1,0 +1,160 @@
+.sliderContainer {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	max-width: 1200px;
+	margin-top: 50px;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		margin-top: 30px;
+	}
+}
+
+.title {
+	font-size: 20px;
+	font-family: 'Montserrat Alternates', sans-serif;
+
+	@media (max-width: 768px) {
+		font-size: 18px;
+	}
+}
+
+.sliderList {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+	position: relative;
+
+	@media (max-width: 768px) {
+		height: 200px;
+	}
+}
+
+.sliderImage {
+	position: absolute;
+	transition: all 0.5s ease;
+	cursor: pointer;
+	filter: brightness(0.7);
+
+	img {
+		transition: all 0.5s ease;
+		
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.left2 {
+		left: 10%;
+		transform: translateX(-50%) scale(0.5);
+		z-index: 0;
+
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.left {
+		left: 25%;
+		transform: translateX(-50%) scale(0.7);
+		z-index: 1;
+
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.center {
+		left: 50%;
+		transform: translateX(-50%) scale(0.9);
+		z-index: 2;
+		filter: brightness(1);
+
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.right {
+		left: 75%;
+		transform: translateX(-50%) scale(0.7);
+		z-index: 1;
+
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.right2 {
+		left: 90%;
+		transform: translateX(-50%) scale(0.5);
+		z-index: 0;
+
+		width: 150px;
+		height: 150px;
+
+		@media screen and (min-width: 768px) {
+			width: 300px;
+			height: 200px;
+		}
+
+		@media screen and (min-width: 1140px) {
+			width: 410px;
+			height: 250px;
+		}
+	}
+
+	&.hidden {
+		display: none;
+	}
+}

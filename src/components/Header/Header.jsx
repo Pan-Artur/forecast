@@ -56,8 +56,8 @@ export const Header = () => {
           </button>
         </div>
       </div>
-      <LogInModal />
-      <SingInModal />
+      {/* <LogInModal />
+      <SingInModal /> */}
     </header>
   );
 };
