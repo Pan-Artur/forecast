@@ -10,6 +10,9 @@
   align-items: center;
   justify-content: center;
 }
+.isClosed{
+    display: none;
+}
 .modal {
   background-color: #fff;
   width: 100%;
@@ -45,6 +48,7 @@
     }
     &Span {
       position: absolute;
+      cursor: pointer;
       top: -5px;
       right: -17px;
       @media screen and (min-width: 768px) {
