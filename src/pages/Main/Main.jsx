@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Hero } from "./Hero/Hero";
 import { Weather } from "./Weather/Weather";
 import { SeeMore } from "./SeeMore/SeeMore";
+import { Forecast } from "./Forecast/Forecast";
 import { Pets } from "./Pets/Pets";
 import { Nature } from "./Nature/Nature";
 
@@ -72,14 +73,21 @@ export const Main = () => {
         />
       )}
       {expandedCity && (
-        <SeeMore
-          cityName={expandedCity.name}
-          weatherData={expandedCity}
-          isActive={true}
-          isOtherCityActive={expandedCity !== null}
-          isAnimating={isAnimating}
-        />
+        <>
+          <SeeMore
+            cityName={expandedCity.name}
+            weatherData={expandedCity}
+            isActive={true}
+            isOtherCityActive={expandedCity !== null}
+            isAnimating={isAnimating}
+          />
+          <Forecast
+            cityName={expandedCity.name}
+            showHourlyForecast={!!expandedCity}
+          />
+        </>
       )}
+
       <Pets keyword={searchCity} />
       <Nature />
     </main>
