@@ -3,6 +3,8 @@ import logo from "../../assets/images/Header/logo.webp";
 import user from "../../assets/images/Header/user.webp";
 import styles from "./Header.module.scss";
 import { IoIosArrowDown } from "react-icons/io";
+import { SingInModal } from "./loginisation/SingInModal";
+import { LogInModal } from "./loginisation/LogInModal";
 
 export const Header = () => {
   const [headerModalState, setHeaderModalState] = useState(false)
@@ -54,6 +56,8 @@ export const Header = () => {
           </button>
         </div>
       </div>
+      <LogInModal />
+      <SingInModal />
     </header>
   );
 };

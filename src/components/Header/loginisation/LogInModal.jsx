@@ -2,7 +2,7 @@ import styles from "./Login.module.scss";
 
 export const LogInModal = () => {
   return (
-    <div className="backdrop">
+    <div >
       <div className={styles.modal}>
         <h2 className={styles.modalSuptitle}>Log In</h2>
         <form className="modalForm">
