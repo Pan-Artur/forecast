@@ -5,6 +5,7 @@ import { SeeMore } from "./SeeMore/SeeMore";
 import { Pets } from "./Pets/Pets";
 import { Nature } from "./Nature/Nature";
 
+
 export const Main = () => {
   const [searchCity, setSearchCity] = useState("");
   const [deletedCities, setDeletedCities] = useState({});
