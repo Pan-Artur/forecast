@@ -1,19 +1,24 @@
 {
   "files": {
-    "main.css": "/forecast/static/css/main.36bebba0.css",
-    "main.js": "/forecast/static/js/main.c97500d7.js",
+    "main.css": "/forecast/static/css/main.f7146a71.css",
+    "main.js": "/forecast/static/js/main.2147cd5a.js",
     "static/media/hero.webp": "/forecast/static/media/hero.6407386e4b6ba6160104.webp",
+    "static/media/pressure.webp": "/forecast/static/media/pressure.b1e58e7c1196e3a62c64.webp",
+    "static/media/wind.webp": "/forecast/static/media/wind.e0719d612e8397c6ca77.webp",
+    "static/media/temperature.webp": "/forecast/static/media/temperature.7acb648095ce2472395a.webp",
+    "static/media/humidity.webp": "/forecast/static/media/humidity.feacda990d76e6e6e357.webp",
+    "static/media/visibility.webp": "/forecast/static/media/visibility.0a2382ae94e095e31a1e.webp",
     "static/media/logo.webp": "/forecast/static/media/logo.359d50695de96f4fcbc3.webp",
     "static/media/wasap.webp": "/forecast/static/media/wasap.6fff1db66b9cebc44a38.webp",
     "static/media/instagram.webp": "/forecast/static/media/instagram.9dfa1df1c0a8ca455a66.webp",
     "static/media/user.webp": "/forecast/static/media/user.d5e924d1236b548682bd.webp",
     "static/media/facbuk.webp": "/forecast/static/media/facbuk.c9fb1e47ad9adcd1e10a.webp",
     "index.html": "/forecast/index.html",
-    "main.36bebba0.css.map": "/forecast/static/css/main.36bebba0.css.map",
-    "main.c97500d7.js.map": "/forecast/static/js/main.c97500d7.js.map"
+    "main.f7146a71.css.map": "/forecast/static/css/main.f7146a71.css.map",
+    "main.2147cd5a.js.map": "/forecast/static/js/main.2147cd5a.js.map"
   },
   "entrypoints": [
-    "static/css/main.36bebba0.css",
-    "static/js/main.c97500d7.js"
+    "static/css/main.f7146a71.css",
+    "static/js/main.2147cd5a.js"
   ]
 }
