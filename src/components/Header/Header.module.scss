@@ -1,33 +1,115 @@
+.isClosed {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-200px);
+  transition: 500ms;
+
+}
 .header {
-  height: 80px;
-  padding: 0 150px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  // padding: 0 150px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  transition: 500ms;
+  @media screen and (min-width: 768px) {
+    height: 70px;
+  }
+  @media screen and (min-width: 1200px) {
+    height: 80px;
+  }
+  
+  &Modal {
+  transition: 500ms;
+
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #e6e6e6;
+    display: flex;
+    padding: 30px 66px 30px 60px;
+    justify-content: space-between;
+    height: 146px;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    &Btn {
+      padding: 8px 16px;
+
+      color: #000;
+      border-radius: 10px;
+      background: #ffb36c;
+      font-family: "Montserrat Alternates";
+      font-size: 10px;
+      font-weight: 500;
+    }
+    &PP {
+      width: 50px;
+    }
+    &LogInBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    &Nav {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
 
   &NavBox {
-    align-items: center;
-    display: flex;
-    gap: 111px;
+    @media screen and (min-width: 768px) {
+      align-items: center;
+      display: flex;
+      gap: 57px;
+    }
+    @media screen and (min-width: 1200px) {
+      gap: 111px;
+    }
   }
   &Nav {
-    gap: 45px;
-    display: flex;
+    display: none;
+    @media screen and (min-width: 768px) {
+      gap: 45px;
+      display: flex;
+    }
 
     &Item {
       color: #000;
 
       font-family: "Montserrat Alternates";
-      font-size: 12px;
+      font-size: 10px;
 
       font-weight: 500;
-
+      @media screen and (min-width: 1200px) {
+        font-size: 12px;
+      }
     }
   }
 
   &Logo {
-    width: 82px;
-    height: 56px;
+    width: 34px;
+    height: 22px;
+    @media screen and (min-width: 768px) {
+      width: 54px;
+      height: 36px;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 82px;
+      height: 56px;
+    }
   }
   &LogInBox {
     display: flex;
@@ -35,16 +117,53 @@
     gap: 27px;
   }
   &Btn {
-    padding: 10px 20px;
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: block;
+      padding: 8px 16px;
 
-    color: #000;
-    border-radius: 10px;
-    background: #ffb36c;
-    font-family: "Montserrat Alternates";
-    font-size: 12px;
-    font-weight: 500;
+      color: #000;
+      border-radius: 10px;
+      background: #ffb36c;
+      font-family: "Montserrat Alternates";
+      font-size: 10px;
+      font-weight: 500;
+    }
+    @media screen and (min-width: 1200px) {
+      display: block;
+      padding: 10px 20px;
+      font-size: 12px;
+    }
   }
   &PP {
-    width: 50px;
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: block;
+      width: 40px;
+    }
+    @media screen and (min-width: 1200px) {
+      display: block;
+      width: 50px;
+    }
+  }
+  &Menu {
+    display: flex;
+    gap: 5px;
+    background-color: transparent;
+    align-items: center;
+    color: #000;
+
+    font-family: "Montserrat Alternates";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    &Span {
+      width: 10px;
+      height: 10px;
+    }
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
   }
 }

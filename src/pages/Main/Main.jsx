@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Hero } from "./Hero/Hero";
-import { Weather } from "./Weather/Weather";
+// import { Weather } from "./Weather/Weather";
 import { SeeMore } from "./SeeMore/SeeMore";
 import { Pets } from "./Pets/Pets";
 import { Nature } from "./Nature/Nature";
@@ -60,8 +60,8 @@ export const Main = () => {
 
   return (
     <main>
-      <Hero onCitySearch={handleCitySearch} />
-      {searchCity && (
+      {/* <Hero onCitySearch={handleCitySearch} /> */}
+      {/* {searchCity && (
         <Weather
           city={searchCity}
           onCityCleared={() => setSearchCity("")}
@@ -70,7 +70,7 @@ export const Main = () => {
           onSeeMoreClick={handleSeeMoreClick}
           expandedCityId={expandedCity?.id}
         />
-      )}
+      )} */}
       {expandedCity && (
         <SeeMore
           cityName={expandedCity.name}
@@ -80,8 +80,8 @@ export const Main = () => {
           isAnimating={isAnimating}
         />
       )}
-      <Pets keyword={searchCity} />
-      <Nature />
+      {/* <Pets keyword={searchCity} /> */}
+      {/* <Nature /> */}
     </main>
   );
 };
