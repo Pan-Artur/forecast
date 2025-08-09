@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Hero } from "./Hero/Hero";
-// import { Weather } from "./Weather/Weather";
+import { Weather } from "./Weather/Weather";
 import { SeeMore } from "./SeeMore/SeeMore";
 import { Pets } from "./Pets/Pets";
 import { Nature } from "./Nature/Nature";
@@ -61,7 +61,7 @@ export const Main = () => {
 
   return (
     <main>
-      {/* <Hero onCitySearch={handleCitySearch} />
+      <Hero onCitySearch={handleCitySearch} />
       {searchCity && (
         <Weather
           city={searchCity}
@@ -82,7 +82,7 @@ export const Main = () => {
         />
       )}
       <Pets keyword={searchCity} />
-      <Nature /> */}
+      <Nature />
     </main>
   );
 };
