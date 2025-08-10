@@ -63,6 +63,7 @@
     display: grid;
     grid-template-columns: repeat(3, 320px);
     column-gap: 90px;
+    row-gap: 60px;
   }
 
   &__item {

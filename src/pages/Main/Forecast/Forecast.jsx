@@ -27,12 +27,12 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
           const date = new Date(item.dt * 1000);
           const hours = date.getHours();
           return hours === 0
-            ? "12am"
+            ? "12 am"
             : hours < 12
-            ? `${hours}am`
+            ? `${hours} am`
             : hours === 12
-            ? "12pm"
-            : `${hours - 12}pm`;
+            ? "12 pm"
+            : `${hours - 12} pm`;
         });
 
         const temps = data.list
@@ -86,50 +86,81 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
         scales: {
           x: {
+            type: "category",
             position: "top",
             grid: {
               color: "rgba(0, 0, 0, 0.1)",
               drawTicks: false,
             },
             ticks: {
-              color: "#666",
+              color: "#000",
+              font: {
+                family: "Montserrat",
+                size: 11,
+                weight: 500,
+                style: "normal",
+              },
               autoSkip: false,
               maxRotation: 0,
-              font: {
-                size: 12,
-              },
-              callback: function (val, index) {
+              minRotation: 0,
+              padding: 10,
+              callback: (value, index, ticks) => {
                 return hourlyData.hours[index];
               },
             },
           },
+
           y: {
             position: "left",
-            min: roundedMin - 5,
-            max: roundedMax + 5,
+            min: Math.min(0, roundedMin - 5),
+            max: Math.max(30, roundedMax + 5),
             grid: {
-              color: "rgba(0, 0, 0, 0.1)",
-              lineWidth: 1,
-              tickLength: 70,
+              color: (ctx) => {
+                const value = ctx.tick.value;
+                if (Math.abs(value - 0) < 0.1 || Math.abs(value - 30) < 0.1) {
+                  return "transparent";
+                }
+                return "rgba(0, 0, 0, 0.1)";
+              },
+              lineWidth: (ctx) => {
+                const value = ctx.tick.value;
+                if (Math.abs(value - 0) < 0.1 || Math.abs(value - 30) < 0.1) {
+                  return 0;
+                }
+                return 1;
+              },
             },
             ticks: {
-              stepSize: 5,
-              count: 5,
-              callback: (value) => {
-                if (value === 0 || value === 30) return "";
-                return `${value}°C`;
+              color: "#000",
+              font: {
+                family: "Montserrat",
+                size: 11,
+                weight: 500,
+                style: "normal",
               },
-              color: "#666",
+              crossAlign: "far",
+              stepSize: 5,
+              callback: (value) => {
+                if ([5, 10, 15, 20, 25].includes(value)) {
+                  return `${value}°C`;
+                }
+                return "";
+              },
             },
           },
         },
         layout: {
           padding: {
-            top: 60,
-            bottom: 40,
-            left: 30,
+            top: 0,
+            bottom: 0,
+            left: 0,
             right: 20,
           },
         },
@@ -144,7 +175,7 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
   }, [hourlyData]);
 
   return (
-    <section className={style.forecast__section}>
+    <section className={style.forecast}>
       <Container>
         <div className={style.forecast__box}>
           <h2 className={style.forecast__title}>Hourly forecast</h2>
