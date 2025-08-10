@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/forecast/static/css/main.f7146a71.css",
-    "main.js": "/forecast/static/js/main.2147cd5a.js",
+    "main.css": "/forecast/static/css/main.49ae3f26.css",
+    "main.js": "/forecast/static/js/main.ef056414.js",
     "static/media/hero.webp": "/forecast/static/media/hero.6407386e4b6ba6160104.webp",
     "static/media/pressure.webp": "/forecast/static/media/pressure.b1e58e7c1196e3a62c64.webp",
     "static/media/wind.webp": "/forecast/static/media/wind.e0719d612e8397c6ca77.webp",
@@ -14,11 +14,11 @@
     "static/media/user.webp": "/forecast/static/media/user.d5e924d1236b548682bd.webp",
     "static/media/facbuk.webp": "/forecast/static/media/facbuk.c9fb1e47ad9adcd1e10a.webp",
     "index.html": "/forecast/index.html",
-    "main.f7146a71.css.map": "/forecast/static/css/main.f7146a71.css.map",
-    "main.2147cd5a.js.map": "/forecast/static/js/main.2147cd5a.js.map"
+    "main.49ae3f26.css.map": "/forecast/static/css/main.49ae3f26.css.map",
+    "main.ef056414.js.map": "/forecast/static/js/main.ef056414.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7146a71.css",
-    "static/js/main.2147cd5a.js"
+    "static/css/main.49ae3f26.css",
+    "static/js/main.ef056414.js"
   ]
 }
