@@ -13,6 +13,8 @@ export const Weather = ({
   setDeletedCities,
   onSeeMoreClick,
   expandedCityId,
+  showForecast,
+  onHourlyForecastClick,
 }) => {
   const [searchedCities, setSearchedCities] = useState([]);
   const [favoriteCities, setFavoriteCities] = useState([]);
@@ -193,6 +195,10 @@ export const Weather = ({
 
   if (!city) return null;
 
+  const handleHourlyForecastClick = (cityWeather) => {
+    onHourlyForecastClick(cityWeather);
+  };
+
   const handleRefreshClick = (cityName) => {
     setLoading(true);
     setError(null);
@@ -335,6 +341,7 @@ export const Weather = ({
                     <button
                       className={`${style.weather__forecast} ${style.weather__hourly}`}
                       type="button"
+                      onClick={() => handleHourlyForecastClick(cityWeather)}
                     >
                       Hourly forecast
                     </button>
@@ -521,6 +528,7 @@ export const Weather = ({
                     <button
                       className={`${style.weather__forecast} ${style.weather__hourly}`}
                       type="button"
+                      onClick={() => handleHourlyForecastClick(cityWeather)}
                     >
                       Hourly forecast
                     </button>

@@ -11,6 +11,8 @@ export const Main = () => {
   const [searchCity, setSearchCity] = useState("");
   const [deletedCities, setDeletedCities] = useState({});
   const [expandedCity, setExpandedCity] = useState(null);
+  const [showForecast, setShowForecast] = useState(false);
+  const [forecastCity, setForecastCity] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleCitySearch = (city) => {
@@ -60,6 +62,16 @@ export const Main = () => {
     }
   };
 
+  const toggleHourlyForecast = (cityWeather) => {
+    if (forecastCity?.id === cityWeather.id) {
+      setShowForecast(false);
+      setForecastCity(null);
+    } else {
+      setShowForecast(true);
+      setForecastCity(cityWeather);
+    }
+  };
+
   return (
     <main>
       <Hero onCitySearch={handleCitySearch} />
@@ -70,25 +82,23 @@ export const Main = () => {
           deletedCities={deletedCities}
           setDeletedCities={setDeletedCities}
           onSeeMoreClick={handleSeeMoreClick}
+          onHourlyForecastClick={toggleHourlyForecast}
           expandedCityId={expandedCity?.id}
+          showForecast={showForecast}
         />
       )}
       {expandedCity && (
-        <>
-          <SeeMore
-            cityName={expandedCity.name}
-            weatherData={expandedCity}
-            isActive={true}
-            isOtherCityActive={expandedCity !== null}
-            isAnimating={isAnimating}
-          />
-          <Forecast
-            cityName={expandedCity.name}
-            showHourlyForecast={!!expandedCity}
-          />
-        </>
+        <SeeMore
+          cityName={expandedCity.name}
+          weatherData={expandedCity}
+          isActive={true}
+          isOtherCityActive={expandedCity !== null}
+          isAnimating={isAnimating}
+        />
       )}
-
+      {showForecast && forecastCity && (
+        <Forecast cityName={forecastCity.name} showHourlyForecast={true} />
+      )}
       <Pets keyword={searchCity} />
       <Nature />
     </main>
