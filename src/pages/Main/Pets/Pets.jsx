@@ -11,7 +11,6 @@ export const Pets = ({ keyword }) => {
       setLoading(true);
       setError(null);
       setNews(null);
-      console.log(keyword);
       try {
         let response;
         if (keyword === "") {
@@ -30,7 +29,6 @@ export const Pets = ({ keyword }) => {
 
         const data = await response.json();
         setNews(data);
-        console.log(data.articles);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -46,7 +44,7 @@ export const Pets = ({ keyword }) => {
         <h2 className={styles.newsTitle}>News</h2>
         <ul className={styles.newsList}>
           {news?.articles?.map(article => (
-            <li className={styles.newsItem}>
+            <li key={Math.random(100000)} className={styles.newsItem}>
               <img src={article.urlToImage} alt="" className={styles.newsImg} />
               <p className={styles.newsText}>{article.title}</p>
             </li>

@@ -10,6 +10,15 @@
   align-items: center;
   justify-content: center;
 }
+.wrong{
+  background-color: #ff7171;
+  outline: solid red;
+
+  &::placeholder{
+    color: red;
+  }
+}
+
 .isClosed{
     display: none;
 }
@@ -84,12 +93,15 @@
       border: 0;
       margin-bottom: 25px;
 
-      color: #ababab;
+      color: #000000;
 
       font-family: Montserrat;
       font-size: 12px;
       font-weight: 500;
+      &::placeholder{
+        color: #ababab;
 
+      }
       @media screen and (min-width: 1200px) {
         margin-bottom: 30px;
         height: 50px;
