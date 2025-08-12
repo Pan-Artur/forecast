@@ -16,13 +16,12 @@
     }
   }
   &List {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
     gap: 20px;
   }
   &Item {
-    width: 250px;
+    width: 270px;
   }
   &Img {
     height: 208px;

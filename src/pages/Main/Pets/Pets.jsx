@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "../../../components/Container/Container";
-import styles from './Pets.module.scss'
+import styles from "./Pets.module.scss";
 
 export const Pets = ({ keyword }) => {
   const [news, setNews] = useState(null);
@@ -17,7 +17,7 @@ export const Pets = ({ keyword }) => {
           response = await fetch(
             `https://newsapi.org/v2/everything?q=weather&pageSize=4&apiKey=a12a75963ea54bf9ae07b0291c252927`
           );
-        } else{
+        } else {
           response = await fetch(
             `https://newsapi.org/v2/everything?q=${keyword}&pageSize=4&apiKey=a12a75963ea54bf9ae07b0291c252927`
           );
@@ -28,6 +28,7 @@ export const Pets = ({ keyword }) => {
         }
 
         const data = await response.json();
+
         setNews(data);
       } catch (err) {
         setError(err.message);
@@ -37,20 +38,26 @@ export const Pets = ({ keyword }) => {
     };
     getData();
   }, [keyword]);
-
-  return <>
-    <section className={styles.news}>
-      <Container>
-        <h2 className={styles.newsTitle}>News</h2>
-        <ul className={styles.newsList}>
-          {news?.articles?.map(article => (
-            <li key={Math.random(100000)} className={styles.newsItem}>
-              <img src={article.urlToImage} alt="" className={styles.newsImg} />
-              <p className={styles.newsText}>{article.title}</p>
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </section>
-  </>;
+  
+  return (
+    <>
+      <section className={styles.news}>
+        <Container>
+          <h2 className={styles.newsTitle}>News</h2>
+          <ul className={styles.newsList}>
+            {news?.articles?.map((article) => (
+              <li className={styles.newsItem}>
+                <img
+                  src={article.urlToImage}
+                  alt=""
+                  className={styles.newsImg}
+                />
+                <p className={styles.newsText}>{article.title}</p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+    </>
+  );
 };
