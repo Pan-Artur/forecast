@@ -18,12 +18,15 @@ export const Header = ({ isLoggined, setIsLoggined }) => {
   const toggleHeaderModal = () => {
     setHeaderModalState(!headerModalState);
   };
+
   const changeIsLoggined = () => {
-    setIsLoggined(false)
-    localStorage.setItem('isLoggedIn', JSON.stringify(false))
+    if (isLoggined) {
+      localStorage.removeItem("userFavorites");
+    }
 
-
-  }
+    setIsLoggined(false);
+    localStorage.setItem("isLoggedIn", JSON.stringify(false));
+  };
 
   return (
     <header className={styles.header}>
