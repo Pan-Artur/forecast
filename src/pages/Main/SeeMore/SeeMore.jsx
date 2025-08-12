@@ -10,15 +10,11 @@ import visibilityImage from "../../../assets/images/SeeMore/visibility.webp";
 import style from "./SeeMore.module.scss";
 
 export const SeeMore = ({
-  cityName,
   weatherData,
-  isActive,
   isOtherCityActive,
-  isAnimating
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [isShaking, setIsShaking] = useState(false);
 
   const weatherDetails = [
     {
@@ -62,12 +58,6 @@ export const SeeMore = ({
     }
     
     setIsVisible(true);
-    
-    if (isOtherCityActive) {
-      setIsShaking(true);
-      const timer = setTimeout(() => setIsShaking(false), 500);
-      return () => clearTimeout(timer);
-    }
   }, [isOtherCityActive, weatherData]);
 
   useEffect(() => {
@@ -77,12 +67,7 @@ export const SeeMore = ({
     }
     
     setIsVisible(true);
-    
-    if (isOtherCityActive) {
-      setIsShaking(true);
-      const timer = setTimeout(() => setIsShaking(false), 500);
-      return () => clearTimeout(timer);
-    }
+  
   }, [isOtherCityActive, weatherData]);
 
   if (isClosing) {
@@ -98,9 +83,7 @@ export const SeeMore = ({
 
   return (
     <section 
-      className={`${style.seeMore} ${isVisible ? style.seeMore_visible : ''} ${
-        isShaking ? style.shake : ''
-      } ${isOtherCityActive ? style.highlight : ''}`}
+      className={`${style.seeMore} ${isVisible ? style.seeMore_visible : ''} ${isOtherCityActive ? style.highlight : ''}`}
     >
       <Container>
         <ul className={style.seeMore__list}>

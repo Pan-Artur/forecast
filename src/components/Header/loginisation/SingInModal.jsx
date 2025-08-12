@@ -1,7 +1,6 @@
 import styles from "./Login.module.scss";
 import { RxCross2 } from "react-icons/rx";
-import { ToastContainer, toast } from 'react-toastify';
-
+// import { ToastContainer, toast } from 'react-toastify';
 
 export const SingInModal = ({ signIn, setSignIn, setLogIn, logIn, setIsLoggined }) => {
   
