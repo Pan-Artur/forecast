@@ -8,8 +8,9 @@ import { WeeklyForecast } from "./Forecast/WeeklyForecast/WeeklyForecast";
 import { Pets } from "./Pets/Pets";
 import { Nature } from "./Nature/Nature";
 
-export const Main = () => {
+export const Main = ({ isLoggined }) => {
   const [searchCity, setSearchCity] = useState("");
+  const [favoriteCities, setFavoriteCities] = useState([]);
   const [deletedCities, setDeletedCities] = useState({});
   const [expandedCity, setExpandedCity] = useState(null);
   const [forecastCity, setForecastCity] = useState(null);
@@ -17,6 +18,17 @@ export const Main = () => {
   const [currentActiveCityId, setCurrentActiveCityId] = useState(null);
   const [isAnyModalOpen, setIsAnyModalOpen] = useState(false);
   const [activeForecastType, setActiveForecastType] = useState(null);
+
+  useEffect(() => {
+    if (isLoggined) {
+      const saved = localStorage.getItem("userFavorites");
+      if (saved) {
+        setFavoriteCities(JSON.parse(saved));
+      }
+    } else {
+      setFavoriteCities([]);
+    }
+  }, [isLoggined]);
 
   useEffect(() => {
     if (expandedCity && deletedCities[expandedCity.name.toLowerCase()]) {
@@ -121,23 +133,24 @@ export const Main = () => {
   return (
     <main>
       <Hero onCitySearch={handleCitySearch} />
-      {searchCity && (
-        <Weather
-          city={searchCity}
-          onCityCleared={() => setSearchCity("")}
-          deletedCities={deletedCities}
-          setDeletedCities={setDeletedCities}
-          onSeeMoreClick={handleSeeMoreClick}
-          onHourlyForecastClick={toggleHourlyForecast}
-          onWeeklyForecastClick={toggleWeeklyForecast}
-          expandedCityId={expandedCity?.id}
-          forecastCityId={forecastCity?.id}
-          weeklyForecastCityId={weeklyForecastCity?.id}
-          currentActiveCityId={currentActiveCityId}
-          isAnyModalOpen={isAnyModalOpen}
-          activeForecastType={activeForecastType}
-        />
-      )}
+      <Weather
+        city={searchCity}
+        favoriteCities={favoriteCities}
+        setFavoriteCities={setFavoriteCities}
+        onCityCleared={() => setSearchCity("")}
+        deletedCities={deletedCities}
+        setDeletedCities={setDeletedCities}
+        onSeeMoreClick={handleSeeMoreClick}
+        onHourlyForecastClick={toggleHourlyForecast}
+        onWeeklyForecastClick={toggleWeeklyForecast}
+        expandedCityId={expandedCity?.id}
+        forecastCityId={forecastCity?.id}
+        weeklyForecastCityId={weeklyForecastCity?.id}
+        currentActiveCityId={currentActiveCityId}
+        isAnyModalOpen={isAnyModalOpen}
+        activeForecastType={activeForecastType}
+        isLoggined={isLoggined}
+      />
       {expandedCity && !deletedCities[expandedCity.name.toLowerCase()] && (
         <SeeMore
           cityName={expandedCity.name}
@@ -153,14 +166,15 @@ export const Main = () => {
           onClose={() => toggleHourlyForecast(forecastCity)}
         />
       )}
-      {weeklyForecastCity && !deletedCities[weeklyForecastCity.name.toLowerCase()] && (
-        <WeeklyForecast
-          cityWeather={weeklyForecastCity}
-          isActive={true}
-          onClose={() => toggleWeeklyForecast(weeklyForecastCity)}
-        />
-      )}
-      <Pets keyword={searchCity} />
+      {weeklyForecastCity &&
+        !deletedCities[weeklyForecastCity.name.toLowerCase()] && (
+          <WeeklyForecast
+            cityWeather={weeklyForecastCity}
+            isActive={true}
+            onClose={() => toggleWeeklyForecast(weeklyForecastCity)}
+          />
+        )}
+      {/* <Pets keyword={searchCity} /> */}
       <Nature />
     </main>
   );

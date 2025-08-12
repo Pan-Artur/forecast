@@ -4,7 +4,6 @@ import { Footer } from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 
 export const App = () => {
-  
   const [isLoggined, setIsLoggined] = useState(false);
   
   useEffect(() => {
@@ -17,7 +16,7 @@ export const App = () => {
     <div className="App">
       <Header isLoggined={isLoggined} setIsLoggined={setIsLoggined}/>
       
-      <Main />
+      <Main isLoggined={isLoggined} />
       <Footer />
     </div>
   );
