@@ -8,6 +8,7 @@ import style from "./Hero.module.scss";
 
 export const Hero = ({ onCitySearch }) => {
   const [city, setCity] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
 
   const formatDate = () => {
@@ -35,13 +36,16 @@ export const Hero = ({ onCitySearch }) => {
   };
 
   const handleSearch = () => {
-    if (city.trim()) {
-      onCitySearch(city.trim());
-      setCity("");
-      setError(false);
-    } else {
+    setSubmitted(true);
+
+    if (!city.trim()) {
       setError(true);
+      return;
     }
+
+    onCitySearch(city.trim());
+    setCity("");
+    setError(false);
   };
 
   const handleKeyPress = (e) => {
@@ -74,7 +78,10 @@ export const Hero = ({ onCitySearch }) => {
             placeholder="Search city..."
             aria-label="Search city"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => {
+              setCity(e.target.value);
+              setSubmitted(false);
+            }}
             onKeyDown={handleKeyPress}
           />
           <button
@@ -86,7 +93,7 @@ export const Hero = ({ onCitySearch }) => {
             <IoSearch size={25} />
           </button>
         </div>
-        {error && (
+        {error && !city.trim() && (
           <div className={style.hero__error}>
             Please enter a city name to search
           </div>

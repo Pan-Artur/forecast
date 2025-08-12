@@ -222,16 +222,18 @@
     &:hover {
       background: darken(#ffb36c, 10%);
     }
+  }
 
-    &:disabled {
+  &__forecast[disabled],
+  &__more[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    &:hover {
+      transform: none;
       opacity: 0.5;
-      cursor: not-allowed;
-      opacity: 0.6;
-
-      &:hover {
-        transform: none;
-        opacity: 0.5;
-      }
+      background: darken(#ffb36c, 10%);
     }
   }
 }

@@ -1,0 +1,72 @@
+.weeklyForecast {
+  padding: 80px 0 0 0;
+
+  &__box {
+    width: 1140px;
+    height: 554px;
+    padding: 26px 78px 42px 76px;
+    border-radius: 20px;
+    background: #e8e8e8;
+  }
+
+  &__title {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 0 0;
+    gap: 10px;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 50px 0 50px;
+    width: 986px;
+    height: 47px;
+    border-radius: 10px;
+    background: #d9d9d9;
+  }
+
+  &__day {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__temperature {
+    position: absolute;
+    top: 0;
+    left: 481px;
+    display: flex;
+  }
+
+  &__icon {
+    position: absolute;
+    top: -12px;
+    right: 0px;
+    width: 70px;
+    height: 70px;
+  }
+
+  &__collation {
+    position: absolute;
+    top: 15px;
+  }
+
+  &__description {
+    color: #000;
+    text-align: right;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

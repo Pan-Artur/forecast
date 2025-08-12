@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { fetchHourlyForecast } from "../../../assets/services/weatherService.js";
-import { Container } from "../../../components/Container/Container.jsx";
-import style from "./Forecast.module.scss";
+import { fetchHourlyForecast } from "../../../../assets/services/weatherService.js";
+import { Container } from "../../../../components/Container/Container.jsx";
+import style from "./HourlyForecast.module.scss";
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 
-export const Forecast = ({ cityName, showHourlyForecast }) => {
+export const HourlyForecast = ({ cityName, isActive }) => {
   const [hourlyData, setHourlyData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -15,7 +15,7 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!cityName || !showHourlyForecast) return;
+      if (!cityName || !isActive) return;
 
       setLoading(true);
       setError(null);
@@ -48,7 +48,7 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
     };
 
     fetchData();
-  }, [cityName, showHourlyForecast]);
+  }, [cityName, isActive]);
 
   useEffect(() => {
     if (!hourlyData || !chartRef.current) return;
@@ -175,10 +175,10 @@ export const Forecast = ({ cityName, showHourlyForecast }) => {
   }, [hourlyData]);
 
   return (
-    <section className={style.forecast}>
+    <section className={style.hourlyForecast}>
       <Container>
-        <div className={style.forecast__box}>
-          <h2 className={style.forecast__title}>Hourly forecast</h2>
+        <div className={style.hourlyForecast__box}>
+          <h2 className={style.hourlyForecast__title}>Hourly forecast</h2>
           <div className={style.chart__container}>
             <canvas
               ref={chartRef}
