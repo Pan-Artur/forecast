@@ -18,6 +18,12 @@ export const Header = ({ isLoggined, setIsLoggined }) => {
   const toggleHeaderModal = () => {
     setHeaderModalState(!headerModalState);
   };
+  const changeIsLoggined = () => {
+    setIsLoggined(false)
+    localStorage.setItem('isLoggedIn', JSON.stringify(false))
+
+
+  }
 
   return (
     <header className={styles.header}>
@@ -38,7 +44,7 @@ export const Header = ({ isLoggined, setIsLoggined }) => {
       <div className={styles.headerLogInBox}>
         {isLoggined ? (
           <button
-            onClick={() => setIsLoggined(false)}
+            onClick={changeIsLoggined}
             type="button"
             className={styles.headerBtn}
           >
@@ -81,7 +87,7 @@ export const Header = ({ isLoggined, setIsLoggined }) => {
           />
           {isLoggined ? (
             <button
-              onClick={() => setIsLoggined(false)}
+              onClick={changeIsLoggined}
               type="button"
               className={styles.headerBtn}
             >
@@ -96,13 +102,6 @@ export const Header = ({ isLoggined, setIsLoggined }) => {
               Sign Up
             </button>
           )}
-          <button
-            onClick={changeSignInModal}
-            type="button"
-            className={styles.headerModalBtn}
-          >
-            Sing Up
-          </button>
         </div>
       </div>
       <LogInModal
