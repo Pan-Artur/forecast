@@ -164,6 +164,10 @@ export const Weather = ({
 
         const data = await response.json();
 
+        if (!data.name || !data.sys || !data.sys.country) {
+          throw new Error("City not found!");
+        }
+
         const isDataDuplicate = [...favoriteCities, ...searchedCities].some(
           (c) => c.id === data.id
         );
