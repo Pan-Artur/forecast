@@ -1,9 +1,14 @@
 {
   "files": {
-    "main.css": "/forecast/static/css/main.49ae3f26.css",
-    "main.js": "/forecast/static/js/main.ef056414.js",
+    "main.css": "/forecast/static/css/main.c698125d.css",
+    "main.js": "/forecast/static/js/main.fe670a0c.js",
     "static/media/hero.webp": "/forecast/static/media/hero.6407386e4b6ba6160104.webp",
+    "static/media/img1.webp": "/forecast/static/media/img1.8df9b75f930ed5611e63.webp",
+    "static/media/img5.webp": "/forecast/static/media/img5.058259ef9a24ea4f759a.webp",
+    "static/media/img4.webp": "/forecast/static/media/img4.00e0e57beb357bc5c634.webp",
+    "static/media/img2.webp": "/forecast/static/media/img2.f0d21581de1208a1cccd.webp",
     "static/media/pressure.webp": "/forecast/static/media/pressure.b1e58e7c1196e3a62c64.webp",
+    "static/media/img3.webp": "/forecast/static/media/img3.a52c9b69bcd601284f57.webp",
     "static/media/wind.webp": "/forecast/static/media/wind.e0719d612e8397c6ca77.webp",
     "static/media/temperature.webp": "/forecast/static/media/temperature.7acb648095ce2472395a.webp",
     "static/media/humidity.webp": "/forecast/static/media/humidity.feacda990d76e6e6e357.webp",
@@ -14,11 +19,11 @@
     "static/media/user.webp": "/forecast/static/media/user.d5e924d1236b548682bd.webp",
     "static/media/facbuk.webp": "/forecast/static/media/facbuk.c9fb1e47ad9adcd1e10a.webp",
     "index.html": "/forecast/index.html",
-    "main.49ae3f26.css.map": "/forecast/static/css/main.49ae3f26.css.map",
-    "main.ef056414.js.map": "/forecast/static/js/main.ef056414.js.map"
+    "main.c698125d.css.map": "/forecast/static/css/main.c698125d.css.map",
+    "main.fe670a0c.js.map": "/forecast/static/js/main.fe670a0c.js.map"
   },
   "entrypoints": [
-    "static/css/main.49ae3f26.css",
-    "static/js/main.ef056414.js"
+    "static/css/main.c698125d.css",
+    "static/js/main.fe670a0c.js"
   ]
 }
