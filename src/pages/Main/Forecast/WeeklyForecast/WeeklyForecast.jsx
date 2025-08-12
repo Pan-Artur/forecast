@@ -1,8 +1,25 @@
+import { useState, useEffect } from "react";
 import { Container } from "../../../../components/Container/Container";
 import style from "./WeeklyForecast.module.scss";
 
-export const WeeklyForecast = ({ cityWeather, isActive }) => {
-  if (!isActive || !cityWeather || !cityWeather.list) return null;
+export const WeeklyForecast = ({ cityWeather, isActive, onClose }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (!isActive) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        setIsClosing(false);
+      }, 300); // Час анімації
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(true);
+    }
+  }, [isActive]);
+
+  if (!cityWeather || !cityWeather.list) return null;
 
   const getDailyStats = (forecasts) => {
     let dayTemp = -Infinity;
@@ -59,8 +76,21 @@ export const WeeklyForecast = ({ cityWeather, isActive }) => {
 
   const forecastDays = Array.from(daysMap.entries()).slice(0, 8);
 
+  if (isClosing) {
+    return (
+      <div className={`${style.weeklyForecast} ${style.weeklyForecast_closing}`}>
+        <Container>
+          <div className={style.weeklyForecast__box}>
+          </div>
+        </Container>
+      </div>
+    );
+  }
+
   return (
-    <section className={style.weeklyForecast}>
+    <section 
+      className={`${style.weeklyForecast} ${isVisible ? style.weeklyForecast_visible : ''}`}
+    >
       <Container>
         <div className={style.weeklyForecast__box}>
           <h2 className={style.weeklyForecast__title}>8-day forecast</h2>

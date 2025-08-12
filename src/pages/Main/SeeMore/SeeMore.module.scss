@@ -22,10 +22,6 @@
     transition: all 0.4s ease-out;
   }
 
-  &_animating {
-    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  }
-
   &__list {
     display: grid;
     grid-template-columns: repeat(3, 290px);
