@@ -179,7 +179,7 @@ export const Weather = ({
 
         setSearchedCities((prev) => {
           const alreadyExists = prev.some((c) => c.id === data.id);
-          return alreadyExists ? prev : [...prev, data];
+          return alreadyExists ? prev : [data, ...prev];
         });
 
         setNearestHours((prev) => ({

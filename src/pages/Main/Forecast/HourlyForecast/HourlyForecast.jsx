@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { fetchHourlyForecast } from "../../../../assets/services/weatherService.js";
+import { fetchHourlyForecast } from "../../../../services/weatherService.js";
 import { Container } from "../../../../components/Container/Container.jsx";
 import style from "./HourlyForecast.module.scss";
 import { Chart, registerables } from "chart.js";
