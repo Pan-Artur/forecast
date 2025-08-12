@@ -47,6 +47,9 @@ export const LogInModal = ({logIn, setLogIn, setIsLoggined}) => {
         if (error) return;
         setLogIn(false)
         setIsLoggined(true)
+        localStorage.setItem('isLoggedIn', JSON.stringify(true))
+
+
         // fetch(
         //   "https://684d9d2865ed08713916a5ac.mockapi.io/weather-loginization",
         //   {

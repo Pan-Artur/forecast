@@ -54,6 +54,8 @@ export const SingInModal = ({ signIn, setSignIn, setLogIn, logIn, setIsLoggined 
         setSignIn(false)
         setIsLoggined(true)
       });
+      localStorage.setItem('isLoggedIn', JSON.stringify(true))
+
     // console.log(allUsers)
 
     // console.log(allUsers)
