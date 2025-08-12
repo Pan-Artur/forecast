@@ -6,21 +6,27 @@ import { IoIosArrowDown } from "react-icons/io";
 import { SingInModal } from "./loginisation/SingInModal";
 import { LogInModal } from "./loginisation/LogInModal";
 
-export const Header = () => {
-  const [toggleLogInModal, setToggleLogInModal] = useState(false)
-  const [toggleSignInModal, setToggleSignInModal] = useState(false)
-  const [headerModalState, setHeaderModalState] = useState(false)
+export const Header = ({ isLoggined, setIsLoggined }) => {
+  const [toggleLogInModal, setToggleLogInModal] = useState(false);
+  const [toggleSignInModal, setToggleSignInModal] = useState(false);
+  const [headerModalState, setHeaderModalState] = useState(false);
 
   const changeSignInModal = () => {
-    setToggleSignInModal(!toggleSignInModal)
-  }
+    setToggleSignInModal(!toggleSignInModal);
+  };
 
   const toggleHeaderModal = () => {
     setHeaderModalState(!headerModalState);
   };
+  const changeIsLoggined = () => {
+    setIsLoggined(false)
+    localStorage.setItem('isLoggedIn', JSON.stringify(false))
+
+
+  }
 
   return (
-    <header className={styles.header }>
+    <header className={styles.header}>
       <div className={styles.headerNavBox}>
         <img src={logo} alt="logo" className={styles.headerLogo} />
         <nav className={styles.headerNav}>
@@ -36,15 +42,32 @@ export const Header = () => {
         </nav>
       </div>
       <div className={styles.headerLogInBox}>
-        <button onClick={changeSignInModal} type="button" className={styles.headerBtn}>
-          Sing Up
-        </button>
+        {isLoggined ? (
+          <button
+            onClick={changeIsLoggined}
+            type="button"
+            className={styles.headerBtn}
+          >
+            Log out
+          </button>
+        ) : (
+          <button
+            onClick={changeSignInModal}
+            type="button"
+            className={styles.headerBtn}
+          >
+            Sign Up
+          </button>
+        )}
         <img src={user} alt="Profile Picture" className={styles.headerPP} />
         <button onClick={toggleHeaderModal} className={styles.headerMenu}>
-          Menu <span className={styles.headerMenuSpan}><IoIosArrowDown /></span>
+          Menu{" "}
+          <span className={styles.headerMenuSpan}>
+            <IoIosArrowDown />
+          </span>
         </button>
       </div>
-      <div className={headerModalState ? styles.headerModal : styles.isClosed }>
+      <div className={headerModalState ? styles.headerModal : styles.isClosed}>
         <nav className={styles.headerModalNav}>
           <a href="" className={styles.headerNavItem}>
             Who we are
@@ -57,15 +80,42 @@ export const Header = () => {
           </a>
         </nav>
         <div className={styles.headerModalLogInBox}>
-          <img src={user} alt="Profile Picture" className={styles.headerModalPP} />
-
-          <button onClick={changeSignInModal} type="button" className={styles.headerModalBtn}>
-            Sing Up
-          </button>
+          <img
+            src={user}
+            alt="Profile Picture"
+            className={styles.headerModalPP}
+          />
+          {isLoggined ? (
+            <button
+              onClick={changeIsLoggined}
+              type="button"
+              className={styles.headerBtn}
+            >
+              Log out
+            </button>
+          ) : (
+            <button
+              onClick={changeSignInModal}
+              type="button"
+              className={styles.headerBtn}
+            >
+              Sign Up
+            </button>
+          )}
         </div>
       </div>
-      <LogInModal logIn={toggleLogInModal} setLogIn={setToggleLogInModal}/>
-      <SingInModal signIn={toggleSignInModal} setSignIn={setToggleSignInModal} setLogIn={setToggleLogInModal} logIn={toggleLogInModal}/>
+      <LogInModal
+        logIn={toggleLogInModal}
+        setLogIn={setToggleLogInModal}
+        setIsLoggined={setIsLoggined}
+      />
+      <SingInModal
+        signIn={toggleSignInModal}
+        setSignIn={setToggleSignInModal}
+        setLogIn={setToggleLogInModal}
+        logIn={toggleLogInModal}
+        setIsLoggined={setIsLoggined}
+      />
     </header>
   );
 };

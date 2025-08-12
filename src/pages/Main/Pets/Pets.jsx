@@ -11,7 +11,6 @@ export const Pets = ({ keyword }) => {
       setLoading(true);
       setError(null);
       setNews(null);
-      console.log(keyword);
       try {
         let response;
         if (keyword === "") {
@@ -31,8 +30,6 @@ export const Pets = ({ keyword }) => {
         const data = await response.json();
 
         setNews(data);
-
-        console.log(data.articles);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -41,7 +38,7 @@ export const Pets = ({ keyword }) => {
     };
     getData();
   }, [keyword]);
-
+  
   return (
     <>
       <section className={styles.news}>
