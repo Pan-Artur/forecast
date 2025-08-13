@@ -75,8 +75,8 @@ export const Hero = ({ onCitySearch }) => {
           <input
             className={style.hero__input}
             type="text"
-            placeholder="Search city..."
-            aria-label="Search city"
+            placeholder="Search location..."
+            aria-label="Search location"
             value={city}
             onChange={(e) => {
               setCity(e.target.value);
