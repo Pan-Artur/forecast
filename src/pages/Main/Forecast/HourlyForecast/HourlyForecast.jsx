@@ -23,7 +23,11 @@ export const HourlyForecast = ({ cityName, isActive }) => {
       try {
         const data = await fetchHourlyForecast(cityName);
 
-        const hours = data.list.slice(0, 20).map((item) => {
+        let pointsToShow = 20;
+        if (window.innerWidth < 768) pointsToShow = 3;
+        else if (window.innerWidth < 1200) pointsToShow = 8;
+
+        const hours = data.list.slice(0, pointsToShow).map((item) => {
           const date = new Date(item.dt * 1000);
           const hours = date.getHours();
           return hours === 0
@@ -36,7 +40,7 @@ export const HourlyForecast = ({ cityName, isActive }) => {
         });
 
         const temps = data.list
-          .slice(0, 20)
+          .slice(0, pointsToShow)
           .map((item) => Math.round(item.main.temp));
 
         setHourlyData({ hours, temps });
@@ -47,7 +51,16 @@ export const HourlyForecast = ({ cityName, isActive }) => {
       }
     };
 
+    const handleResize = () => {
+      fetchData();
+    };
+
+    window.addEventListener("resize", handleResize);
     fetchData();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [cityName, isActive]);
 
   useEffect(() => {
@@ -60,7 +73,6 @@ export const HourlyForecast = ({ cityName, isActive }) => {
     const ctx = chartRef.current.getContext("2d");
 
     const minTemp = Math.min(...hourlyData.temps);
-    const maxTemp = Math.max(...hourlyData.temps);
 
     const roundedMin = Math.max(5, Math.floor(minTemp / 5) * 5);
     const roundedMax = 25;
@@ -103,7 +115,7 @@ export const HourlyForecast = ({ cityName, isActive }) => {
               color: "#000",
               font: {
                 family: "Montserrat",
-                size: 11,
+                size: window.innerWidth < 1200 ? 10 : 11,
                 weight: 500,
                 style: "normal",
               },
@@ -141,7 +153,7 @@ export const HourlyForecast = ({ cityName, isActive }) => {
               color: "#000",
               font: {
                 family: "Montserrat",
-                size: 11,
+                size: window.innerWidth < 1200 ? 10 : 11,
                 weight: 500,
                 style: "normal",
               },

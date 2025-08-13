@@ -152,21 +152,22 @@
   &__forecasts {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 21px;
     margin: 0 0 15px 0;
 
     @media (min-width: 1200px) {
-      gap: 21px;
+      gap: 25px;
       margin: 0 0 12px 0;
     }
   }
 
   &__forecast {
     display: flex;
-    padding: 8px 18px;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    height: 23px;
+    padding: 8px 16px;
     border-radius: 5px;
     background: #ffb36c;
 
@@ -179,6 +180,8 @@
     transition: all 500ms;
 
     @media (min-width: 1200px) {
+      height: 28px;
+      padding: 8px 18px;
       border-radius: 10px;
       font-size: 10px;
     }
