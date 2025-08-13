@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchWeeklyForecast } from "../../assets/services/weatherService";
+import { fetchWeeklyForecast } from "../../services/weatherService";
 import { Hero } from "./Hero/Hero";
 import { Weather } from "./Weather/Weather";
 import { SeeMore } from "./SeeMore/SeeMore";

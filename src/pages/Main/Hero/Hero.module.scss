@@ -4,10 +4,19 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 595px;
+  min-height: 345px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 0 0 0;
+  padding: 50px 0 0 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 0 0 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    min-height: 595px;
+    padding: 100px 0 0 0;
+  }
 
   &::before {
     content: "";
@@ -28,52 +37,116 @@
     align-items: center;
     margin: 0 auto;
     height: 100%;
-    gap: 80px;
+    gap: 35px;
+
+    @media screen and (min-width: 768px) {
+      gap: 40px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      gap: 80px;
+    }
   }
 
   &__title {
     color: #fff;
-    font-family: "Montserrat", sans-serif;
-    font-size: 40px;
+    font-family: Montserrat;
+    font-size: 14px;
     font-weight: 600;
-    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 40px;
+    }
   }
 
   &__couple {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 0 114px 0 0;
+    gap: 20px;
+    padding: 0;
+    margin: 0 0 13px 0;
+    border-left: solid 1.5px #fff;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      padding: 0 0 0 120px;
+      margin: 0 0 24px 0;
+      border-left: none;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 0 94px 0 0;
+      margin: 0;
+    }
   }
 
   &__advice {
-    width: 410px;
-    height: 144px;
+    width: 170px;
+    height: 36px;
     color: #fff;
-    text-align: right;
-    padding: 0 52px 0 0;
+    text-align: left;
+    padding: 0 0 0 25px;
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 10px;
     font-weight: 500;
 
-    border-right: solid 1.5px #fff;
+    @media screen and (min-width: 768px) {
+      width: 183px;
+      height: 110px;
+      text-align: right;
+      padding: 0 34px 0 0;
+      font-size: 14px;
+
+      border-right: solid 1.5px #fff;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 410px;
+      height: 144px;
+      padding: 0 52px 0 0;
+      font-size: 24px;
+    }
   }
 
   &__description {
-    height: 87px;
+    height: 36px;
+
+    @media screen and (min-width: 768px) {
+      height: 68px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      height: 144px;
+    }
   }
 
   &__date {
-    width: 300px;
-    height: 144px;
+    height: 24px;
     color: #fff;
     text-align: left;
-    padding: 0 0 0 52px;
+    padding: 0 0 0 25px;
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 10px;
     font-weight: 500;
     white-space: pre-line;
 
-    border-left: solid 1.5px #fff;
+    @media screen and (min-width: 768px) {
+      width: 300px;
+      height: 110px;
+      padding: 0 0 0 34px;
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      height: 144px;
+      padding: 0 0 0 52px;
+      font-size: 24px;
+    }
 
     sup {
       font-size: 0.6em;
@@ -83,57 +156,138 @@
   &__box {
     display: flex;
     align-items: center;
-    width: 625px;
-    height: 42px;
+    width: 173.8px;
+    height: 14.889px;
+
+    @media screen and (min-width: 768px) {
+      width: 402px;
+      height: 27px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 625px;
+      height: 42px;
+    }
   }
 
   &__input {
-    width: 580px;
-    height: 42px;
-    padding: 13px 29px 12px;
+    width: 158px;
+    height: 14.889px;
+    padding: 3.97px 10.43px;
+    font-size: 6px;
+    font-family: Montserrat;
+    font-weight: 500;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background: #d9d9d9;
 
+    @media screen and (min-width: 768px) {
+      width: 373px;
+      height: 27px;
+      padding: 8.36px 18.65px;
+      font-size: 10px;
+      border-radius: 10px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 580px;
+      height: 42px;
+      padding: 13px 29px 12px;
+      font-size: 14px;
+    }
+
     &::placeholder {
       color: #878787;
       font-family: Montserrat;
-      font-size: 14px;
+      font-size: 6px;
       font-weight: 500;
+
+      @media screen and (min-width: 768px) {
+        font-size: 10px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        font-size: 14px;
+      }
     }
   }
 
   &__button {
-    width: 45px;
-    height: 42px;
-    padding: 2px 2px 0 0;
+    width: 16.181px;
+    height: 15px;
+    padding: 0 2px 10px 0;
     border-radius: 0 10px 10px 0;
     border-left: 2px solid #000;
     background: #ffb36c;
 
     transition: all 500ms;
 
+    @media (min-width: 768px) {
+      width: 29px;
+      height: 27px;
+      padding: 2px 2px 0 0;
+    }
+
+    @media (min-width: 1200px) {
+      width: 45px;
+      height: 42px;
+    }
+
     &:hover {
       background: darken(#ffb36c, 10%);
+    }
+
+    svg {
+      width: 10px;
+      height: 15px;
+
+      @media (min-width: 768px) {
+        width: 20px;
+        height: 20px;
+      }
+
+      @media (min-width: 1200px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
   &__error {
-    position: absolute;
-    bottom: -30px;
-    left: 450px;
+    margin: -30px 0 0 0;
     color: #ff6b6b;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 6px;
     font-weight: 500;
     animation: shake 0.5s ease;
 
+    @media (min-width: 768px) {
+      margin: -35px 0 0 0;
+      font-size: 10px;
+    }
+
+    @media (min-width: 1200px) {
+      margin: -70px 0 0 0;
+      font-size: 14px;
+    }
+
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      20%,
+      60% {
+        transform: translateX(-5px);
+      }
+      40%,
+      80% {
+        transform: translateX(5px);
+      }
     }
   }
 }
