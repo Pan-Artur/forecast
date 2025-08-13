@@ -20,14 +20,26 @@
   }
 
   &__notification {
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 10px;
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.3s, opacity 0.5s ease-out;
     animation: slideIn 0.3s ease-out;
     opacity: 1;
+
+    @media (min-width: 768px) {
+      padding: 10px 15px;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 15px 20px;
+      font-size: 18px;
+    }
 
     &:hover {
       transform: translateX(5px);
@@ -59,11 +71,19 @@
     padding: 40px;
     color: #666;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 10px;
     font-weight: 500;
     background: #f8f8f8;
     border-radius: 20px;
     animation: fadeIn 0.5s ease;
+
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 18px;
+    }
   }
 
   &__list {

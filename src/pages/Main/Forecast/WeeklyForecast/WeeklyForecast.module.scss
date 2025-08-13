@@ -19,76 +19,196 @@
     opacity: 1;
     transform: translateY(0);
     max-height: 1000px;
-    padding: 80px 0 0 0;
+    padding: 35px 0 0 0;
     transition: all 0.4s ease-out;
+
+    @media (min-width: 768px) {
+      padding: 50px 0 0 0;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 80px 0 0 0;
+    }
   }
 
   &__box {
-    width: 1140px;
-    height: 554px;
-    padding: 26px 78px 42px 76px;
-    border-radius: 20px;
+    width: 293px;
+    height: 755px;
+    padding: 18px 25px 35px;
+    border-radius: 15px;
     background: #e8e8e8;
+
+    @media (min-width: 768px) {
+      width: 634px;
+      height: 526px;
+      padding: 20px 35px 35px 35px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 1140px;
+      height: 554px;
+      padding: 26px 78px 42px 76px;
+      border-radius: 20px;
+    }
   }
 
   &__title {
+    margin: 0 0 0 18px;
     color: #000;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 600;
+
+    @media (min-width: 768px) {
+      margin: 0 0 0 10px;
+      font-size: 12px;
+    }
+
+    @media (min-width: 1200px) {
+      margin: 0;
+      font-size: 16px;
+    }
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(4, 140px);
     align-items: center;
-    margin: 20px 0 0 0;
-    gap: 10px;
+    margin: 25px 0 0 0;
+    column-gap: 43px;
+    row-gap: 35px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(1, 564px);
+      grid-template-rows: repeat(8, 40px);
+      gap: 17px;
+      margin: 17px 0 0 0;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(1, 986px);
+      grid-template-rows: repeat(8, 47px);
+      gap: 10px;
+      margin: 20px 0 0 0;
+    }
   }
 
   &__item {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 14px 50px 0 50px;
-    width: 986px;
-    height: 47px;
+    padding: 10px 17px 22px;
     border-radius: 10px;
     background: #d9d9d9;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      padding: 11px 15px;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(1, 986px);
+      grid-template-rows: repeat(8, 47px);
+      margin: 0;
+      padding: 14px 50px 14px 50px;
+    }
   }
 
   &__day {
     color: #000;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 500;
+    margin: 0 auto 84px auto;
+
+    @media (min-width: 768px) {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 16px;
+    }
   }
 
   &__temperature {
     position: absolute;
     top: 0;
-    left: 481px;
+    left: 85px;
     display: flex;
+
+    @media (min-width: 768px) {
+    }
+
+    @media (min-width: 1200px) {
+      top: 0;
+      left: 481px;
+    }
   }
 
   &__icon {
     position: absolute;
-    top: -12px;
-    right: 0px;
-    width: 70px;
-    height: 70px;
+    top: 33px;
+    right: 12px;
+    width: 50px;
+    height: 50px;
+
+    @media (min-width: 768px) {
+      top: -9px;
+      right: -202px;
+      width: 55px;
+      height: 55px;
+    }
+
+    @media (min-width: 1200px) {
+      top: -12px;
+      right: 0px;
+      width: 70px;
+      height: 70px;
+    }
   }
 
   &__collation {
     position: absolute;
-    top: 15px;
+    top: 79px;
+    right: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    width: 36px;
+    font-size: 10px;
+
+    @media (min-width: 768px) {
+      top: 11px;
+      right: -247px;
+      transform: translateX(0);
+      font-size: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      top: 15px;
+      right: -43px;
+      font-size: 16px;
+    }
   }
 
   &__description {
+    margin: 0 auto;
     color: #000;
     text-align: right;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 16px;
+    }
   }
 }
