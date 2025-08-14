@@ -174,7 +174,7 @@ export const Main = ({ isLoggined }) => {
             onClose={() => toggleWeeklyForecast(weeklyForecastCity)}
           />
         )}
-      <Pets keyword={searchCity} />
+{/*       <Pets keyword={searchCity} /> */}
       <Nature />
     </main>
   );
