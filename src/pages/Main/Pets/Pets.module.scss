@@ -1,5 +1,13 @@
 .news {
-  padding-top: 80px;
+  padding: 35px 0 0 0;
+
+  @media (min-width: 768px) {
+    padding: 50px 0 0 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 80px 0 0 0;
+  }
 
   &Title {
     color: #000;
@@ -18,26 +26,56 @@
 
   &List {
     display: grid;
-    grid-template-columns: repeat(4, 270px);
-    gap: 20px;
+    grid-template-columns: repeat(1, 300px);
+    gap: 30px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 300px);
+      gap: 50px;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 270px);
+      gap: 20px;
+    }
   }
 
   &Item {
-    width: 270px;
+    width: 300px;
+
+    @media (min-width: 768px) {
+      width: 300px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 270px;
+    }
   }
 
   &Img {
-    height: 208px;
+    height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
     object-fit: cover;
+
+    @media (min-width: 1200px) {
+      height: 208px;
+    }
   }
 
   &Text {
     color: #000;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 16px;
+    }
   }
 
   &__notifications {
@@ -57,23 +95,23 @@
     font-family: Montserrat;
     font-size: 14px;
     font-weight: 500;
-    
+
     &.error {
       background-color: #ff4444;
     }
-    
+
     &.warning {
       background-color: #ffbb33;
     }
-    
+
     &.success {
-      background-color: #00C851;
+      background-color: #00c851;
     }
-    
+
     &.info {
       background-color: #33b5e5;
     }
-    
+
     &--fading {
       opacity: 0;
     }
