@@ -76,28 +76,8 @@ export const Pets = ({ keyword }) => {
       <section className={styles.news}>
         <Container>
           <h2 className={styles.newsTitle}>News</h2>
-          <div className={styles.news__notifications}>
-            {notifications.map((notification) => (
-              <div
-                key={notification.id}
-                className={`${styles.news__notification} ${
-                  styles[notification.type]
-                } ${
-                  notification.fading
-                    ? styles["news__notification--fading"]
-                    : ""
-                }`}
-                onClick={() => removeNotification(notification.id)}
-              >
-                {notification.message}
-              </div>
-            ))}
-          </div>
-          {loading ? (
-            <div className={styles.news__loading}>Loading news...</div>
-          ) : error ? (
-            <div className={styles.news__error}>
-              <p>{error}</p>
+          {error ? (
+            <div className={styles.news__empty}>
               <p>Server might be overloaded. Go touch some grass.</p>
             </div>
           ) : (
