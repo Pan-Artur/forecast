@@ -117,8 +117,6 @@
     }
   }
 
-  &__loading,
-  &__error,
   &__empty {
     text-align: center;
     padding: 40px;
@@ -128,7 +126,14 @@
     background: #f8f8f8;
     border-radius: 20px;
     animation: fadeIn 0.5s ease;
-    grid-column: 1 / -1;
+
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 18px;
+    }
   }
 
   &__loading {
